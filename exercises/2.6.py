@@ -17,9 +17,6 @@ nom_procs = comm.Get_size()  # How many processors there are.
 if procno == 0:
     print("Total processors:" + str(nom_procs))
 
-lower_bound = maxfactor*procno+1
-upper_bound = maxfactor*(procno+1)
-
-for myfactor in range(lower_bound, upper_bound):
+for myfactor in range(procno+1, maxfactor, nom_procs):
     if bignum%myfactor==0:
         print("Processor %d found factor %d" % (procno, myfactor))
